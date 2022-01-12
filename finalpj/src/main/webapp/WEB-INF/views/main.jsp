@@ -58,9 +58,6 @@ width: 400px;
 
 <body>
 
-<h1>Hi</h1>
-<h1>Hi</h1>
-
 
 <div id="link">
 	<a href="/lol"><span class="s_link"><img alt="classicicon" src="./image/classicicon.png" width="30px" height="30px">홈</span></a>
