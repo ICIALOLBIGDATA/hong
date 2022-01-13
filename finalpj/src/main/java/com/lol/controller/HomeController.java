@@ -45,6 +45,7 @@ public class HomeController {
 	@RequestMapping(value = "/test2", method = RequestMethod.GET)
 	public ModelAndView Test() {
 		ModelAndView mav = new ModelAndView();
+		
 		return mav;
 	}
 	
