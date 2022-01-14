@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 회원관련 sql문 작성 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 1. parameterType은 생략가능. -->
+<!-- 2. parameterType을 명시할땐 1개 Type만 가능. -->
+<!-- 3. 만일 parameterType가 여러개인 경우 무조건 생략. -->
+<!-- 4. parameterType이 bean(DTO,Entity)인 경우 #{필드명} -> '문자열', 숫자면 100. -->
+<!-- 5. parameterType이 map인 경우 #{key} -->
+<!-- 6. parameterType이 변수인 경우 #{변수명} -->
+<!-- 7. 1개 또는 그 이상의 컬럼을 return할 경우 resultType="bean타입" 명시해야함 (생략 불가능) -->
+<!-- 8. List로 반환시에도 bean or map 타입 명시한다. -->
+<!-- 9. #{}: 문자열인 경우 ''(문자열)로 변환 -->
+<!-- 10. ${}: 문자열 변환없이 문자 그대로 입력(예, 컬럼명) -->
+
+
+<mapper namespace="com.board.icia.dao.IMemberDao"> <!-- 이경로에 있는 인터페이스 쓸거임 -->
+	
+	<insert id="memberJoin"> <!-- 아까 Memberbean에서 이름 똑같이 한걸 넣어줌 -->
+		INSERT INTO M VALUES(#{m_id},#{m_pwd},#{m_name},#{m_birth},#{m_addr},default)
+	</insert>
+
+	<select id="access" resultType="boolean">
+		SELECT COUNT(*) FROM M WHERE
+		M_ID=#{m_id} AND M_PWD=#{m_pwd}
+	</select>
+
+	<select id="getMemberInfo" resultType="Member"> <!-- id는 인터페이스에서 만든거랑 똑같이 입력 -->
+		SELECT * FROM MINFO WHERE M_ID=#{m_id}
+	</select>
+
+	<select id="getSecurityPwd" resultType="String">
+		SELECT M_PWD FROM M WHERE M_ID=#{m_id}
+	</select>
+
+</mapper>
+
+
