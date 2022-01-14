@@ -76,6 +76,13 @@ public class ChampInfoMM {
 		return mav;
 	}
 
+	public ModelAndView login() {
+		mav = new ModelAndView();
+		String view = "login";
+		mav.setViewName(view);
+		return mav;
+	}
+
 
 	
 	

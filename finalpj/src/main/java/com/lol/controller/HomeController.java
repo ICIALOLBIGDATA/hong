@@ -42,11 +42,12 @@ public class HomeController {
 		return mav;
 		
 	}
-	@RequestMapping(value = "/test2", method = RequestMethod.GET)
-	public ModelAndView Test() {
-		ModelAndView mav = new ModelAndView();
-		
+	
+	@GetMapping(value = "login")
+	public ModelAndView login() throws JsonProcessingException {
+		mav = ci.login();
 		return mav;
+		
 	}
 	
 }
