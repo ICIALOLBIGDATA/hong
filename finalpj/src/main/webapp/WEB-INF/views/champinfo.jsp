@@ -69,6 +69,21 @@ display: flex;
 flex-wrap: wrap;
 border: solid 1px;
 border-collapse: collapse;
+justify-content: center;
+}
+.main div {
+border: solid 1px;
+width: 498px;
+border-collapse: collapse;
+}
+div#skill {
+text-align-last: center;
+width: 1000px;
+height: 200px;
+}
+div#skill div{
+display: inline-table;
+width : 64px;
 }
 
 </style>
@@ -119,6 +134,7 @@ let staringitemtwo = champinfo.starting_item_img_two.split("|");
 let mainitem = champinfo.main_item_build_img.split("|");
 let boots = champinfo.boots_img.split("|");
 let skill = champinfo.skill_img.split("|");
+let skillkey = champinfo.skill_key.split("|");
 let goodsynergy = champinfo.synergy_tier.split(",")[0].split("|");
 let badsynergy = champinfo.synergy_tier.split(",")[1].split("|");
 let goodcombinationscore = champinfo.combination_score.split(",")[0].split("|");
@@ -299,7 +315,9 @@ else{
 // 스킬
 for (let i in skill){
 	if (skill[i].indexOf("%") == -1){
-		str = "<img class='skill' src="+skill[i]+">";
+		str = "<div>"
+		str += "<img class='skill' src="+skill[i]+"><br>";
+		str += "<span>"+skillkey[i]+"</span></div>";
 		if (i != 2){
 			$("#skill").append(str+"->");
 		}else{
