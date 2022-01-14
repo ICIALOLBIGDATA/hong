@@ -43,5 +43,11 @@ public class HomeController {
 		
 	}
 	
+	@GetMapping(value = "login")
+	public ModelAndView login() throws JsonProcessingException {
+		mav = ci.login();
+		return mav;
+		
+	}
 	
 }

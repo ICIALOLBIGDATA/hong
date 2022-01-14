@@ -132,8 +132,9 @@ display: inline-flex;
 flex-direction: row;
 flex-wrap: wrap;
 align-content: flex-start;
-justify-content: flex-start;
+justify-content:space-around;
 }
+
 .th_champ{
 width: 225px;
 height: 50px;
@@ -201,7 +202,7 @@ transition:0.5s;
    
     padding: 0px 13px 0px 13px;
     overflow-y: scroll;
-    height: 500px;
+    height: 590px;
     box-sizing: border-box;
     color: white;
     font-family: 'Nanum Gothic';
@@ -209,17 +210,21 @@ transition:0.5s;
     }
 
 
-.cmplist {
-width:50%;
+#cmplist {
+width:700px;
 
-border-radius: 0px 10px 20px 30px;
+
+
 
 
 }
 
 .cmap{
 width : 40%;
+padding-left : 50px;
 }
+
+
 
 </style>
 
@@ -263,23 +268,23 @@ width : 40%;
        
       </div>
       
-      <div class="tbox">
+      <div class="scroll type1">
 
-      </div>
+     
       
 <div id="main"> 
 	
 	<div class="cmplist">
 	<h1>Champion List</h1>
-	<div class = "scroll type1">
+	
 	<div id="champlst"></div>
-	</div>
+	
 	</div>
 	
 	<div class="cmap" >
 		<h1>Champion Tier</h1>
 	
-	<div class = "scroll type1">
+
 	<div id="champion">
 		
 		<table id="champ_table">
@@ -292,11 +297,11 @@ width : 40%;
 		</table>
 		
 		
-	</div>
+
 	</div>
 	</div>
 </div>
-
+ </div>
 
 </body>
 <script type="text/javascript">

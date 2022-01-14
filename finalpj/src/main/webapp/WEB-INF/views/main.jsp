@@ -199,13 +199,13 @@ div.btnbg:hover{
         </nav>
        
       </div>
-      <div class="jb-box">
+      
 
-        <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
       <source src="./videos/animated-kayle-morgana-login.mp4">
 
 </video>
-      </div>
+    
       <div class="a">
       <div class = "logo2">
           <div class="dhb">DHB</div>
