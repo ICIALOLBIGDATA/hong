@@ -5,18 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 
 <style type="text/css">
-#link{
-width: 100%; 
-height: 50px;
-padding-top: 25px;
-}
-.s_link{
-color: black;
-padding: 25px;
-font-size: 30px;
-}
+
 a{
 text-decoration: none; 
 color: inherit;
@@ -36,11 +31,16 @@ height: 20px;
 #rune_one, #rune_two{
 text-align: center;
 }
+#rune_two{
+display:none;
+}
 .runeone, .runetwo{
 border-radius : 30%;
 width:30px;
 object-fit: cover;
 }
+
+
 .goodsynergy, .badsynergy{
 border-radius : 30%;
 width:30px;
@@ -70,45 +70,24 @@ width: 1000px;
 #goodsynergy, #badsynergy{
 display: flex;
 flex-wrap: wrap;
-justify-content: center;
 border: solid 1px;
 border-collapse: collapse;
 }
-div#skill div {
-display: inline-table;
-width: 64px;
-}
-div#skill {
-text-align-last: center;
-width: 1000px;
-height: 200px;
-}
-.main div {
-border: solid 1px;
-width: 498px;
-border-collapse: collapse;
-}
+
 </style>
 
 </head>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
 <body>
-
-<div id="link">
-	<a href="/lol"><span class="s_link"><img alt="classicicon" src="./image/classicicon.png" width="30px" height="30px">홈</span></a>
-	<a href="aram"><span class="s_link"><img alt="aramicon" src="./image/aramicon.png" width="30px" height="30px">칼바람</span></a>
-	<a href=""><span class="s_link"><img alt="tfticon" src="./image/tfticon.png" width="30px" height="30px">박제게시판</span></a>
-</div>
-
 <h1>테스팅용 DB긁어오기</h1>
 
 <div id="champimg"><h3>챔피언</h3></div>
-
+<div id="rune_title"></div>
 <div class = "main">
-	<div id="rune_one"><h3>룬 1</h3></div>
+	<div id="rune_one" ><h3>룬 1</h3></div>
 	
-	<div id="rune_two"><h3>룬 2</h3></div>
+	<div id="rune_two" ><h3>룬 2</h3></div>
 	
 	<div id="spell"><h3>스펠</h3></div>
 	
@@ -143,7 +122,6 @@ let staringitemtwo = champinfo.starting_item_img_two.split("|");
 let mainitem = champinfo.main_item_build_img.split("|");
 let boots = champinfo.boots_img.split("|");
 let skill = champinfo.skill_img.split("|");
-let skillkey = champinfo.skill_key.split("|");
 let goodsynergy = champinfo.synergy_tier.split(",")[0].split("|");
 let badsynergy = champinfo.synergy_tier.split(",")[1].split("|");
 let goodcombinationscore = champinfo.combination_score.split(",")[0].split("|");
@@ -182,6 +160,12 @@ for (let i=0; i<(runeone.length-2); i++){
 		$("#rune_one").append("<br><span class ='rune_one'>PickRate: "+runeone[11]+" / WinRate:"+runeone[12]+"</span>");
 		break;
 	}
+	if(i==1){
+		$("#rune_title").append("<img id='rune_one_main' class='rune_one_title' src="+runeone[1]+">")
+	}
+	if(i==5){
+		$("#rune_title").append("<img id='rune_one_sub' class='rune_title'src="+runeone[5]+">")
+	}
 	str = "<img class='runeone' src="+runeone[i]+">";
 	$("#rune_one").append(str);
 	if (i == 0 || i == 1 || i == 4 || i == 5 || i == 7){
@@ -197,6 +181,12 @@ for (let i=0; i<(runetwo.length-2); i++){
 		$("#rune_two").append(str);
 		$("#rune_two").append("<br><span class ='rune_two'>PickRate: "+runetwo[11]+" / WinRate:"+runetwo[12]+"</span>");
 		break;
+	}
+	if(i==1){
+		$("#rune_title").append("<img id='rune_two_main' class='rune_two_title' src="+runetwo[1]+">")
+	}
+	if(i==5){
+		$("#rune_title").append("<img id='rune_two_sub' class='rune_two_title' src="+runetwo[5]+">")
 	}
 	str = "<img class='runetwo' src="+runetwo[i]+">";
 	$("#rune_two").append(str);
@@ -312,9 +302,7 @@ else{
 // 스킬
 for (let i in skill){
 	if (skill[i].indexOf("%") == -1){
-		str = "<div>"
-		str += "<img class='skill' src="+skill[i]+"><br>";
-		str += "<span>"+skillkey[i]+"</span></div>";
+		str = "<img class='skill' src="+skill[i]+">";
 		if (i != 2){
 			$("#skill").append(str+"->");
 		}else{
@@ -359,6 +347,18 @@ for (let i in badsynergy){
 	str += "</div>"
 	$("#badsynergy").append(str);
 }
+</script>
+<script type="text/javascript">
+
+$('#rune_one_main').click(function(){
+	$('#rune_one').attr('style','display:inline');
+	$('#rune_two').attr('style','display:none');
+})
+
+$('#rune_two_main').click(function(){
+	$('#rune_two').attr('style','display:inline');
+	$('#rune_one').attr('style','display:none');
+})
 </script>
 
 </html>
